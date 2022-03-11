@@ -54,3 +54,27 @@ Share the experience and decorate the home of many iokians with totally responsi
 ---
 
 Have a good Friday folks! 🔥
+
+
+---
+
+# Setup
+
+## Software
+
+- Of course `npm install`...
+- Create a cloudinary account
+  - Set the uploader credentials in `public/uploader.html`
+  - Set the admin API credentials as env variables to be used in `server.js`'
+- That's it!
+
+
+## Picture Frame
+
+The picture frame is just an iPad that I strapped to a wooden frame.
+
+I opened the yoloframe viewer website and added it to the home screen.
+
+Make sure that auto screenlock is turned off.
+
+Also, in order to prevent reflections while filming the frame, try to reduce screen brightness. Setting the brightness of the iPad to around 10% works best for me.
