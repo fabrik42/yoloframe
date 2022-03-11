@@ -1,0 +1,11 @@
+{
+  "name": "YOLOframe",
+  "short_name": "🖼🆈🅾🅻🅾🖼",
+  "start_url": "https://yoloframe.example.org",
+  "display": "standalone",
+  "icons": [{
+    "src": "https://yoloframe.example.org/yolo.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

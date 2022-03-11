@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>💾 🆈🅾🅻🅾 💾</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script
+      src="https://upload-widget.cloudinary.com/global/all.js"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+    <h1>yoloframe Uploader 💾</h1>
+    <p>Upload pictures, see the world burn.</p>
+    <button id="uploadWidget" class="cloudinary-button">Upload files</button>
+    <script>
+      window.addEventListener("load", (event) => {
+        const styles = {
+          palette: {
+            window: "#ffffff",
+            sourceBg: "#f4f4f5",
+            windowBorder: "#90a0b3",
+            tabIcon: "#000000",
+            inactiveTabIcon: "#555a5f",
+            menuIcons: "#555a5f",
+            link: "#0433ff",
+            action: "#339933",
+            inProgress: "#0433ff",
+            complete: "#339933",
+            error: "#cc0000",
+            textDark: "#000000",
+            textLight: "#fcfffd",
+          },
+        };
+
+        const options = {
+          cloudName: "[cloudinary-cloud-name]",
+          uploadPreset: "[cloudinary-upload-preset]",
+          sources: ["local", "url", "camera", "unsplash"],
+          showAdvancedOptions: false,
+          cropping: false,
+          multiple: false,
+          defaultSource: "local",
+          styles: styles,
+        };
+
+        const callback = (error, result) => {
+          if (!error && result && result.event === "success") {
+            alert("✅ Good job! Upload completed.");
+          } else if (error) {
+            console.error(error);
+            console.dir(result);
+          }
+        };
+
+        const myWidget = cloudinary.createUploadWidget(options, callback);
+
+        document
+          .getElementById("uploadWidget")
+          .addEventListener("click", () => myWidget.open(), false);
+      });
+    </script>
+  </body>
+</html>

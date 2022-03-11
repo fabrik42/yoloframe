@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="manifest" href="manifest.json">
+    <title>🖼🆈🅾🅻🅾🖼</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="frame">
+    <script>
+      const oneHour = 60 * 60 * 1000;
+      const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
+      const isFromLastHour = (resource) => {
+        return Date.parse(resource.created_at) > Date.now() - oneHour;
+      };
+
+      const loadLatest = () => {
+        return fetch("/latest")
+          .then((response) => response.json())
+          .then((response) => response.resources[0]);
+      };
+
+      const loadRandomFav = () => {
+        return fetch("/favs")
+          .then((response) => response.json())
+          .then((response) => rand(response.resources))
+      };
+
+      const renderImage = (resource) => {
+        document.body.style.backgroundImage = `url('${resource.secure_url}')`;
+      };
+
+      const nextImage = () => {
+        const resource = loadLatest().then((resource) => {
+          if (isFromLastHour(resource)) {
+            renderImage(resource);
+          } else {
+            loadRandomFav().then((resource) => {
+              renderImage(resource);
+            });
+          }
+        });
+
+        setTimeout(nextImage, 30 * 1000);
+      };
+
+      window.addEventListener("load", () => nextImage());
+    </script>
+  </body>
+</html>

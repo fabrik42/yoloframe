@@ -1,0 +1,22 @@
+{
+  "name": "yoloframe",
+  "version": "1.2.3",
+  "description": "Picture frame without limits",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "fastify": "^3.27.0",
+    "fastify-static": "^4.5.0",
+    "cloudinary": "^1.28",
+    "lowdb": "1.x"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "yolo"
+  ]
+}
