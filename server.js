@@ -74,7 +74,7 @@ fastify.get("/uploader", function (request, reply) {
 
 fastify.get("/latest", function (request, reply) {
   const cached = cache.get('latest');
-  if (cached) reply.send(cached);
+  if (cached) return reply.send(cached);
 
   loadLatestImageFromToday()
     .then((result) => {
@@ -88,7 +88,7 @@ fastify.get("/latest", function (request, reply) {
 
 fastify.get("/favs", function (request, reply) {
   const cached = cache.get('favs');
-  if (cached) reply.send(cached);
+  if (cached) return reply.send(cached);
 
   loadFavoriteImages()
     .then((result) => {
